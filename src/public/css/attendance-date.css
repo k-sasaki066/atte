@@ -1,0 +1,69 @@
+.date-form {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.date-change__button {
+    display: inline-block;
+    border: 2px solid #4561d1;
+    color: #4561d1;
+    padding: 0 12px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #fff;
+    transition: .3s;
+}
+
+.date-change__button:hover {
+    border: 2px solid #8d9acc;
+    color: #8d9acc;
+}
+
+.date-table__container {
+    margin: 48px auto;
+    width: 90%;
+}
+
+.date-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.date-table__row:not(:last-of-type) {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.date-table__header,
+.date-table__item {
+    padding: 24px 12px;
+}
+
+.date-table__header:first-of-type,
+.date-table__item:first-of-type {
+    padding-left: 28px;
+}
+
+.date-table__header {
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .date-table__container {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+
+    .date-table__container::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .date-table__container::-webkit-scrollbar-track {
+        background: #333;
+    }
+
+    .date-table__container::-webkit-scrollbar-thumb {
+        background: #999;
+    }
+}

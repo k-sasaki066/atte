@@ -1,0 +1,65 @@
+.content__inner {
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.form-group {
+    margin: 32px 0;
+}
+
+.form-group__item {
+    margin-bottom: 24px;
+}
+
+.form-group__input {
+    width: 100%;
+    border: 2px solid darkgray;
+    border-radius: 5px;
+    padding: 8px 16px;
+}
+
+.error-message {
+    text-align: left;
+    color: #ff9494;
+}
+
+.register-form__btn,
+.login-form__btn {
+    width: 100%;
+    display: block;
+    padding: 12px 0;
+    background-color: rgb(48, 88, 207);
+    color: #fff;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+.register-form__btn:hover,
+.login-form__btn:hover {
+    background-color: rgb(84, 114, 206);
+}
+
+.login-guide__text,
+.register-guide__text {
+    color: darkgray;
+}
+
+.login-guide__btn,
+.register-guide__btn {
+    color: rgb(48, 88, 207);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.login-guide__btn:hover,
+.register-guide__btn:hover {
+    color: rgb(92, 120, 203);
+}
+
+@media screen and (max-width: 768px) {
+    .content__inner {
+        width: 60%;
+        }
+}

@@ -29,6 +29,11 @@ a {
 
 .header-nav__link {
     color: #000;
+    transition: .3s;
+}
+
+.header-nav__link:hover {
+    color: darkgrey;
 }
 
 /* ---main--- */

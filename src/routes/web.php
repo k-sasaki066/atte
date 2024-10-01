@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('attendance-date');
+    return view('welcome');
 });
+
+Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::get('/', [AttendanceController::class, 'index']);

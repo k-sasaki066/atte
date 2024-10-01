@@ -14,6 +14,7 @@
         <div class="header-left">
             <h1 class="header-text">Atte</h1>
         </div>
+        @if(Auth::check())
         <nav class="header-right">
             <ul class="header-nav__list">
                 <li class="header-nav__item">
@@ -27,12 +28,16 @@
                     </a>
                 </li>
                 <li class="header-nav__item">
-                    <a href="" class="header-nav__link">
-                        ログアウト
-                    </a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button class="header-nav__link" type="submit">
+                            ログアウト
+                        </button>
+                    </form>
                 </li>
             </ul>
         </nav>
+        @endif
     </header>
 
     <main class="content">

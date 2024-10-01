@@ -8,19 +8,23 @@
 @section('content')
     <div class="content__inner">
         <h2 class="content__header">ログイン</h2>
-        <form class="form-group" action="" method="">
-
+        <form class="form-group" action="/login" method="post">
+            @csrf
             <div class="form-group__item">
                 <input class="form-group__input" type="text" name="email" placeholder="メールアドレス" value="">
                 <div class="error-message">
-                    エラー
+                    @error('email')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
 
             <div class="form-group__item">
-                <input class="form-group__input" type="text" name="password" placeholder="パスワード" value="">
+                <input class="form-group__input" type="password" name="password" placeholder="パスワード" value="">
                 <div class="error-message">
-                    エラー
+                    @error('password')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
 
@@ -31,7 +35,7 @@
             <p class="register-guide__text">
                 アカウントをお持ちでない方はこちらから
             </p>
-            <a class="register-guide__btn" href="">
+            <a class="register-guide__btn" href="/register">
                 会員登録
             </a>
         </div>

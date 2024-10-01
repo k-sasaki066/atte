@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="content__inner">
-        <h2 class="content__header">テストさんお疲れ様です!</h2>
+        <h2 class="content__header">{{ Auth::user()->name }}さんお疲れ様です!</h2>
         <form class="attendance-form__group" action="" method="">
             <button class="work-form__submit" type="submit" name="">
                 勤務開始

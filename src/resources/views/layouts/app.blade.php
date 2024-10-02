@@ -18,7 +18,7 @@
         <nav class="header-right">
             <ul class="header-nav__list">
                 <li class="header-nav__item">
-                    <a href="" class="header-nav__link">
+                    <a href="/" class="header-nav__link">
                         ホーム
                     </a>
                 </li>

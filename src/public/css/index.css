@@ -19,12 +19,16 @@
     height: 24vh;
     border-radius: 5px;
     font-size: 24px;
+    letter-spacing: 0.15em;
     font-weight: bold;
     transition: .3s;
 }
 
 .work-form__submit:hover {
-    background-color: rgb(226, 243, 236);
+    letter-spacing: 0.2em;
+    font-size: 28px;
+    transform: translateY(-5px);
+    box-shadow: 3px 3px 5px rgb(138, 138, 138);
 }
 
 .work-form__submit[disabled] {

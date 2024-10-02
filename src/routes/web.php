@@ -15,9 +15,13 @@ use App\Http\Controllers\RegisteredUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::get('/', [AttendanceController::class, 'index']);
+
+Route::middleware('auth')->group(function() {
+    Route::get('/', [AttendanceController::class, 'index']);
+    Route::post('/', [AttendanceController::class, 'create']);
+});

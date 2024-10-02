@@ -24,6 +24,7 @@ class AttendanceController extends Controller
         }else {
             $status = Auth::user()->status;
         }
+        // dd( $status);
 
         return view('index')->with('status',$status);
     }

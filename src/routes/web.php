@@ -24,4 +24,6 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::middleware('auth')->group(function() {
     Route::get('/', [AttendanceController::class, 'index']);
     Route::post('/', [AttendanceController::class, 'create']);
+    Route::get('/attendance', [AttendanceController::class, 'date']);
+    Route::get('/attendance/date', [AttendanceController::class, 'search']);
 });

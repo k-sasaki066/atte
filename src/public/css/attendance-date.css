@@ -4,6 +4,10 @@
     gap: 40px;
 }
 
+.date-form__header {
+    margin: 0;
+}
+
 .date-change__button {
     display: inline-block;
     border: 2px solid #4561d1;
@@ -21,7 +25,7 @@
 }
 
 .date-table__container {
-    margin: 48px auto;
+    margin: 48px auto 0;
     width: 90%;
 }
 
@@ -47,6 +51,12 @@
 
 .date-table__header {
     text-align: left;
+}
+
+.pagination__link {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {

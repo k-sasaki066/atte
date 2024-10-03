@@ -61,7 +61,10 @@ class User extends Authenticatable
                 'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(rest_end,rest_start)))) as total_rest'
             )
             ->selectRaw(
-                    'TIMEDIFF(TIMEDIFF(work_end, work_start), SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(rest_end,rest_start))))) as total_work'
+                    'TIMEDIFF(work_end, work_start) as total_work'
+            )
+            ->selectRaw(
+                    'TIMEDIFF(TIMEDIFF(work_end, work_start), SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(rest_end,rest_start))))) as actual_work'
             )
             ->groupBy(
                 'name',

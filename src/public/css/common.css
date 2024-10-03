@@ -18,6 +18,10 @@ a {
     align-items: center;
 }
 
+.header-nav__list {
+    margin: 0;
+}
+
 .header-nav__item {
     list-style: none;
     display: inline-block;

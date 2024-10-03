@@ -32,7 +32,7 @@ class AttendanceController extends Controller
     public function create(Request $request) {
         // dd($request);
         $today = Carbon::now()->format('Y-m-d');
-        $now_time = Carbon::now()->format('Y-m-d H:i:s');
+        $now_time = Carbon::now()->format('Y-m-d H:i:00');
         $user_id = Auth::user()->id;
         // dd($user_id);
 
@@ -106,7 +106,8 @@ class AttendanceController extends Controller
 
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->whereDate('work_start', $display)
-        ->simplePaginate(5);
+        ->Paginate(5);
+
 
         return view('attendance-date', compact('users','display'));
     }
@@ -127,7 +128,7 @@ class AttendanceController extends Controller
 
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->whereDate('work_start', $display)
-        ->simplePaginate(5);
+        ->Paginate(5);
         // dd($users);
 
         return view('attendance-date', compact('users','display'));

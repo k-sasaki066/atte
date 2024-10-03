@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="header-nav__item">
-                    <a href="" class="header-nav__link">
+                    <a href="/attendance" class="header-nav__link">
                         日付一覧
                     </a>
                 </li>

@@ -6,12 +6,13 @@
 
 @section('content')
     <div class="content__inner">
-        <form class="date-form" action="" method="">
-            <button class="date-change__button"> < </button>
+        <form class="date-form" action="/attendance/date" method="get">
+            <button class="date-change__button" name="previous-day"> < </button>
+            <input type="hidden" name="display" value="{{ $display }}">
             <h2 class="date-form__header">
-                2024-09-30
+                {{ $display }}
             </h2>
-            <button class="date-change__button"> > </button>
+            <button class="date-change__button" name="next-day"> > </button>
         </form>
 
         <div class="date-table__container">
@@ -23,42 +24,35 @@
                     <th class="date-table__header">休憩時間</th>
                     <th class="date-table__header">勤務時間</th>
                 </tr>
+
+                @foreach($users as $user)
                 <tr class="date-table__row">
-                    <td class="date-table__item">山田太郎</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
+                    <td class="date-table__item">
+                        {{ $user['name'] }}
+                    </td>
+                    <td class="date-table__item">
+                        {{substr($user['work_start'], 11, 8) }}
+                    </td>
+                    <td class="date-table__item">
+                        {{substr($user['work_end'], 11, 8) }}
+                    </td>
+                    <td class="date-table__item">
+                        @if(!$user['total_rest'] == null)
+                        {{ $user['total_rest'] }}
+                        @else
+                        -
+                        @endif
+                    </td>
+                    <td class="date-table__item">
+                        {{ $user['total_work'] }}
+                    </td>
                 </tr>
-                <tr class="date-table__row">
-                    <td class="date-table__item">山田太郎</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                </tr>
-                <tr class="date-table__row">
-                    <td class="date-table__item">山田太郎</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                </tr>
-                <tr class="date-table__row">
-                    <td class="date-table__item">山田太郎</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                </tr>
-                <tr class="date-table__row">
-                    <td class="date-table__item">山田太郎</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                    <td class="date-table__item">08:30:00</td>
-                </tr>
+                @endforeach
             </table>
+
+            <div class="pagination__link">
+                {{ $users->appends(['display'=>$display])->links() }}
+            </div>
         </div>
     </div>
 @endsection

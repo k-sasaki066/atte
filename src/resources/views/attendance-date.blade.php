@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/attendance-date.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 @endsection
 
 @section('content')
@@ -37,21 +38,25 @@
                         {{substr($user['work_end'], 11, 8) }}
                     </td>
                     <td class="date-table__item">
-                        @if(!$user['total_rest'] == null)
-                        {{ $user['total_rest'] }}
-                        @else
+                        @if($user['total_rest'] == null)
                         -
+                        @else
+                        {{ $user['total_rest'] }}
                         @endif
                     </td>
                     <td class="date-table__item">
+                        @if($user['total_rest'] == null)
                         {{ $user['total_work'] }}
+                        @else
+                        {{ $user['actual_work'] }}
+                        @endif
                     </td>
                 </tr>
                 @endforeach
             </table>
 
             <div class="pagination__link">
-                {{ $users->appends(['display'=>$display])->links() }}
+                {{ $users->appends(['display'=>$display])->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ body {
     display: grid;
     grid-template-rows: 80px 1fr 40px;
     grid-template-columns: 1fr;
+    font-family: "Noto Sans JP", sans-serif;
 }
 
 a {
@@ -16,10 +17,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.header-nav__list {
-    margin: 0;
 }
 
 .header-nav__item {
@@ -58,4 +55,40 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.pagination li:not(.active) {
+    border-left: 1px solid #b3d4e5;
+    background-color: #fff;
+    padding: 4px 12px;
+}
+
+.pagination li:last-child {
+    border-right: 1px solid #b3d4e5;
+}
+
+.pagination li:not(:last-child) {
+    border-right: none;
+}
+
+.pagination a {
+    color: #4f7eba;
+    text-decoration: none;
+}
+
+.pagination__link {
+    text-decoration: none;
+}
+
+.active {
+    padding: 4px 12px;
+    background-color: #4f7eba;
+    color: #FFF;
 }

@@ -2,7 +2,6 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/attendance-date.css') }}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 @endsection
 
 @section('content')
@@ -56,7 +55,7 @@
             </table>
 
             <div class="pagination__link">
-                {{ $users->appends(['display'=>$display])->links('vendor.pagination.bootstrap-4') }}
+                {{ $users->appends(['display'=>$display])->links('vendor.pagination.custom') }}
             </div>
         </div>
     </div>

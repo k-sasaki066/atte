@@ -1,11 +1,8 @@
+/* ---日付検索--- */
 .date-form {
     display: flex;
     justify-content: center;
     gap: 40px;
-}
-
-.date-form__header {
-    margin: 0;
 }
 
 .date-change__button {
@@ -24,6 +21,7 @@
     color: #8d9acc;
 }
 
+/* ---テーブル--- */
 .date-table__container {
     margin: 48px auto 0;
     width: 90%;

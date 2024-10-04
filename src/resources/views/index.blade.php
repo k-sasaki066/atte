@@ -18,21 +18,21 @@
 
         <form class="attendance-form__group" action="/" method="post">
             @csrf
-            <button class="work-form__submit" type="submit" name="work_start" {{$status == 0 ? '' : 'disabled'}}>
+            <button class="attendance-form__submit" type="submit" name="work_start" {{$status == 0 ? '' : 'disabled'}}>
                 勤務開始
             </button>
 
-            <button class="work-form__submit" type="submit" name="work_end"
+            <button class="attendance-form__submit" type="submit" name="work_end"
             {{$status == 1 ? '' : 'disabled'}}>
                 勤務終了
             </button>
 
-            <button class="work-form__submit" type="submit" name="rest_start"
+            <button class="attendance-form__submit" type="submit" name="rest_start"
             {{$status == 1 ? '' : 'disabled'}}>
                 休憩開始
             </button>
 
-            <button class="work-form__submit" type="submit" name="rest_end"
+            <button class="attendance-form__submit" type="submit" name="rest_end"
             {{$status == 2 ? '' : 'disabled'}}>
                 休憩終了
             </button>

@@ -67,6 +67,9 @@ a {
 .pagination li:not(.active) {
     border-left: 1px solid #b3d4e5;
     background-color: #fff;
+}
+
+.disabled {
     padding: 4px 12px;
 }
 
@@ -81,6 +84,8 @@ a {
 .pagination a {
     color: #4f7eba;
     text-decoration: none;
+    display: block;
+    padding: 4px 12px;
 }
 
 .pagination__link {

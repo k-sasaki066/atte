@@ -107,6 +107,7 @@ class AttendanceController extends Controller
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->whereDate('work_start', $display)
         ->Paginate(5);
+        // dd($users);
 
 
         return view('attendance-date', compact('users','display'));

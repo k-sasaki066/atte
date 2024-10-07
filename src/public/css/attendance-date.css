@@ -32,29 +32,37 @@
     border-collapse: collapse;
 }
 
-.date-table__row:not(:last-of-type) {
+.date-table__header,
+.date-table__item {
+    padding: 24px 12px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-.date-table__header,
-.date-table__item {
-    padding: 24px 12px;
+.date-table__header:last-of-type,
+.date-table__item:last-of-type {
+    border-bottom: 1px solid #000;
 }
 
 .date-table__header:first-of-type,
 .date-table__item:first-of-type {
     padding-left: 28px;
+    width: 24%;
 }
 
 .date-table__header {
     text-align: left;
 }
 
-.pagination__link {
+.pagination__group {
     margin-top: 24px;
     display: flex;
     justify-content: center;
+}
+
+.date-table__item-empty {
+    text-align: center;
+    padding: 32px 12px;
 }
 
 @media screen and (max-width: 768px) {

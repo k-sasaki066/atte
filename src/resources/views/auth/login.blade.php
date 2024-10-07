@@ -11,7 +11,7 @@
         <form class="form-group" action="/login" method="post">
             @csrf
             <div class="form-group__item">
-                <input class="form-group__input" type="text" name="email" placeholder="メールアドレス" value="">
+                <input class="form-group__input" type="text" name="email" placeholder="メールアドレス" value="{{ old('email') }}">
                 <div class="error-message">
                     @error('email')
                     {{ $message }}

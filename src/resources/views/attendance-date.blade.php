@@ -25,36 +25,44 @@
                     <th class="date-table__header">勤務時間</th>
                 </tr>
 
+                @if($users -> isEmpty())
+                    <tr class="date-table__row">
+                        <td class="date-table__item-empty" colspan="5">
+                            該当データはありません
+                        </td>
+                    </tr>
+                @else
                 @foreach($users as $user)
-                <tr class="date-table__row">
-                    <td class="date-table__item">
-                        {{ $user['name'] }}
-                    </td>
-                    <td class="date-table__item">
-                        {{substr($user['work_start'], 11, 8) }}
-                    </td>
-                    <td class="date-table__item">
-                        {{substr($user['work_end'], 11, 8) }}
-                    </td>
-                    <td class="date-table__item">
-                        @if($user['total_rest'] == null)
-                        -
-                        @else
-                        {{ $user['total_rest'] }}
-                        @endif
-                    </td>
-                    <td class="date-table__item">
-                        @if($user['total_rest'] == null)
-                        {{ $user['total_work'] }}
-                        @else
-                        {{ $user['actual_work'] }}
-                        @endif
-                    </td>
-                </tr>
+                    <tr class="date-table__row">
+                        <td class="date-table__item">
+                            {{ $user['name'] }}
+                        </td>
+                        <td class="date-table__item">
+                            {{substr($user['work_start'], 11, 8) }}
+                        </td>
+                        <td class="date-table__item">
+                            {{substr($user['work_end'], 11, 8) }}
+                        </td>
+                        <td class="date-table__item">
+                            @if($user['total_rest'] == null)
+                            -
+                            @else
+                            {{ $user['total_rest'] }}
+                            @endif
+                        </td>
+                        <td class="date-table__item">
+                            @if($user['total_rest'] == null)
+                            {{ $user['total_work'] }}
+                            @else
+                            {{ $user['actual_work'] }}
+                            @endif
+                        </td>
+                    </tr>
                 @endforeach
+                @endif
             </table>
 
-            <div class="pagination__link">
+            <div class="pagination__group">
                 {{ $users->appends(['display'=>$display])->links('vendor.pagination.custom') }}
             </div>
         </div>

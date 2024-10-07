@@ -21,6 +21,7 @@ class AttendanceController extends Controller
 
         if(!$today_date) {
             $status = 0;
+            User::find($user_id)->fill(['status'=>$status])->save();
         }else {
             $status = Auth::user()->status;
         }
@@ -133,5 +134,14 @@ class AttendanceController extends Controller
         // dd($users);
 
         return view('attendance-date', compact('users','display'));
+    }
+
+    // user一覧表示
+    public function indexUser() {
+        $display = Carbon::now()->format('Y-m-d');
+        $users = User::select('id', 'name', 'email', 'status', 'created_at')->paginate(5);
+        // dd($users);
+
+        return view('attendance-user', compact('display', 'users'));
     }
 }

@@ -61,10 +61,10 @@
                 @endforeach
                 @endif
             </table>
+        </div>
 
-            <div class="pagination__group">
-                {{ $users->appends(['display'=>$display])->links('vendor.pagination.custom') }}
-            </div>
+        <div class="pagination__group">
+            {{ $users->appends(['display'=>$display])->links('vendor.pagination.custom') }}
         </div>
     </div>
 @endsection

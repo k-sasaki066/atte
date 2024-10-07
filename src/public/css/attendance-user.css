@@ -1,0 +1,95 @@
+.user-date__header {
+    text-align: center;
+}
+
+/* ---テーブル--- */
+.user-table__container {
+    margin: 48px auto 0;
+    white-space: nowrap;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table__header {
+    text-align: left;
+}
+
+.user-table__header,
+.user-table__item {
+    padding: 12px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.user-table__header:first-of-type,
+.user-table__item:first-of-type {
+    width: 8%;
+    padding-left: 28px;
+}
+
+.user-table__header:nth-child(2),
+.user-table__item:nth-child(2) {
+    width: 10%;
+}
+
+.user-table__header:nth-child(3),
+.user-table__item:nth-child(3) {
+    width: 20%;
+}
+
+.user-table__header:last-of-type,
+.user-table__item:last-of-type {
+    width: 16%;
+    padding-right: 28px;
+    text-align: right;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 8px 12px;
+    transition: .3s;
+}
+
+.user__edit-btn {
+    background-color: rgb(4, 154, 46);
+    color: #000;
+    margin-right: 8px;
+}
+
+.user__delete-btn {
+    background-color: rgb(240, 87, 82);
+    color: #fff;
+}
+
+.user__edit-btn:hover,
+.user__delete-btn:hover {
+    opacity: .8;
+}
+
+.pagination__group {
+    margin-top: 32px;
+}
+
+@media screen and (max-width: 768px) {
+    .user-table__container {
+        overflow-x: scroll;
+        width: 500px;
+        height: 400px;
+    }
+
+    .user-table__container::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .user-table__container::-webkit-scrollbar-track {
+        background: #333;
+    }
+
+    .user-table__container::-webkit-scrollbar-thumb {
+        background: #999;
+    }
+}

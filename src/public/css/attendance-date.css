@@ -25,6 +25,7 @@
 .date-table__container {
     margin: 48px auto 0;
     width: 90%;
+    white-space: nowrap;
 }
 
 .date-table {
@@ -68,7 +69,8 @@
 @media screen and (max-width: 768px) {
     .date-table__container {
         overflow-x: scroll;
-        white-space: nowrap;
+        width: 500px;
+        height: 400px;
     }
 
     .date-table__container::-webkit-scrollbar {

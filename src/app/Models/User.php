@@ -72,4 +72,23 @@ class User extends Authenticatable
                 'work_end',
             );
     }
+
+    public function scopeIdSearch($query, $user_id) {
+        if(!empty($user_id)) {
+            $query->where('id', $user_id);
+        }
+    }
+
+    public function scopeTextSearch($query, $keyword) {
+        if(!empty($keyword)) {
+            $query->Where('name', 'LIKE', '%' .$keyword .'%')
+            ->orWhere('email', 'LIKE', '%' .$keyword .'%');
+        }
+    }
+
+    public function scopeStatusSearch($query, $status) {
+        if(!empty($status)) {
+            $query->where('status', '=',$status);
+        }
+    }
 }

@@ -2,9 +2,82 @@
     text-align: center;
 }
 
+/* 検索フォーム */
+.user__search-form {
+    width: 70%;
+    margin: 32px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 16px;
+}
+
+.search-form__input {
+    border: 1px solid #cfcdcd;
+    border-radius: 3px;
+    padding: 8px 16px;
+}
+
+.id-input {
+    min-width: 190px;
+}
+
+.keyword-input {
+    min-width: 340px;
+}
+
+.search-form__attendance {
+    position: relative;
+    min-width: 200px;
+}
+
+.attendance-select {
+    width: 100%;
+}
+
+.search-form__actions {
+    display: flex;
+    gap: 16px;
+}
+
+.btn {
+    border-radius: 3px;
+    padding: 8px 20px;
+}
+
+.search-form__search-btn {
+    background-color: #3aadf0;
+    transition: .3s;
+}
+
+.search-form__search-btn:hover,
+.search-form__reset-btn:hover {
+    opacity: .8;
+}
+
+.search-form__reset-btn {
+    background-color: #f09b3a;
+    transition: .3s;
+}
+
+.search-form__attendance::after {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #848280;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    transform: translateY(-50%);
+}
+
+
 /* ---テーブル--- */
 .user-table__container {
     margin: 48px auto 0;
+    width: 90%;
     white-space: nowrap;
 }
 
@@ -19,7 +92,7 @@
 
 .user-table__header,
 .user-table__item {
-    padding: 12px;
+    padding: 12px 18px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
@@ -72,6 +145,11 @@
 
 .pagination__group {
     margin-top: 32px;
+}
+
+.user-table__item-empty {
+    text-align: center;
+    padding: 32px 12px;
 }
 
 @media screen and (max-width: 768px) {

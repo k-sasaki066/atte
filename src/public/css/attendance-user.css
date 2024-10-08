@@ -152,6 +152,90 @@
     padding: 32px 12px;
 }
 
+/* ---modal--- */
+.modal-edit,
+.modal-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.modal-edit:target,
+.modal-delete:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-edit__inner,
+.modal-delete__inner {
+    padding: 64px 64px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    border: 1px solid #333;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
+    transform: translate(-50%, -50%);
+    position: relative;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 20px;
+    color: #333;
+}
+
+.modal-edit__header {
+    text-align: center;
+}
+
+.modal-edit__form {
+    margin: 32px 0 auto;
+}
+
+.modal-edit__group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 20px;
+    padding: 16px;
+}
+
+.modal-edit__input {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px 16px;
+}
+
+.modal-edit__button {
+    display: block;
+    margin: 32px auto 0;
+    background-color: rgb(4, 154, 46);
+    border-radius: 3px;
+    padding: 8px 16px;
+}
+
+.delete-btn {
+    background-color: rgb(240, 87, 82);
+    color: #fff;
+}
+
 @media screen and (max-width: 768px) {
     .user-table__container {
         overflow-x: scroll;

@@ -27,5 +27,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/attendance', [AttendanceController::class, 'date']);
     Route::get('/attendance/date', [AttendanceController::class, 'search']);
     Route::get('/user', [AttendanceController::class, 'indexUser']);
+    Route::patch('/user', [AttendanceController::class, 'update']);
     Route::get('/user/search', [AttendanceController::class, 'searchUser']);
+    Route::post('/user/search', [AttendanceController::class, 'delete']);
 });

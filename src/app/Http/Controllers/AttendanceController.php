@@ -160,4 +160,20 @@ class AttendanceController extends Controller
 
         return view('attendance-user', compact('users', 'display'));
     }
+
+    public function update(Request $request) {
+        // dd($request);
+        $form = $request->only(['name', 'email']);
+        $user = User::find($request->id)
+        ->update($form);
+
+        return redirect('/user');
+    }
+
+    public function delete(Request $request) {
+        // dd($request);
+        $user = User::find($request->id)->delete();
+        // dd($user);
+        return redirect('/user');
+    }
 }

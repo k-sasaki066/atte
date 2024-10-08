@@ -94,12 +94,103 @@
                 </td>
                 <td class="user-table__item">
                     <div class="user__btn-group">
-                        <a class="user__edit-btn btn" href="">編集</a>
-                        <a class="user__delete-btn btn" href="">削除</a>
+                        <a class="user__edit-btn btn" href="#{{ $user->id }}">編集</a>
+                        <a class="user__delete-btn btn" href="#delete{{ $user->id }}">削除</a>
                     </div>
                 </td>
             </tr>
 
+            <div class="modal-edit" id="{{$user->id}}">
+                <a href="#!" class="modal-overlay"></a>
+                <div class="modal-edit__inner">
+                    <a href="#" class="modal__close-btn">×</a>
+                    <h3 class="modal-edit__header">
+                        ユーザー情報編集
+                    </h3>
+                    <form class="modal-edit__form" action="/user" method="post">
+                        @method('PATCH')
+                        @csrf
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                ID
+                            </label>
+                            <span class="modal-edit__text">
+                                {{ $user['id'] }}
+                            </span>
+                            <input type="hidden" name="id" value="{{ $user['id'] }}">
+                        </div>
+
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                名前
+                            </label>
+                            <input class="modal-edit__input" type="text" name="name" value="{{ $user['name'] }}">
+                        </div>
+
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                メールアドレス
+                            </label>
+                            <input class="modal-edit__input" type="text" name="email" value="{{ $user['email'] }}">
+                        </div>
+                        <button class="modal-edit__button" type="submit">
+                            更新
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-delete" id="delete{{$user->id}}">
+                <a href="#!" class="modal-overlay"></a>
+                <div class="modal-delete__inner">
+                    <a href="#" class="modal__close-btn">×</a>
+                    <h3 class="modal-edit__header">
+                        このユーザーを削除します。よろしいですか？
+                    </h3>
+                    <form class="modal-edit__form" action="/user/search" method="post">
+                        @csrf
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                ID
+                            </label>
+                            <span class="modal-edit__text">
+                                {{ $user['id'] }}
+                            </span>
+                            <input type="hidden" name="id" value="{{ $user['id'] }}">
+                        </div>
+
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                名前
+                            </label>
+                            <span class="modal-edit__text">
+                                {{ $user['name'] }}
+                            </span>
+                        </div>
+
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                メールアドレス
+                            </label>
+                            <span class="modal-edit__text">
+                                {{ $user['email'] }}
+                            </span>
+                        </div>
+
+                        <div class="modal-edit__group">
+                            <label for="" class="modal-edit__label">
+                                登録年月日
+                            </label>
+                            <span class="modal-edit__text">
+                                {{ substr($user['created_at'], 0, 10) }}
+                            </span>
+                        </div>
+                        <button class="modal-edit__button delete-btn" type="submit">
+                            削除
+                        </button>
+                    </form>
+                </div>
+            </div>
             @php
                 $list_item+=1;
             @endphp

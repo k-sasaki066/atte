@@ -20,7 +20,7 @@ class AttendanceController extends Controller
         ->first();
 
         if(!$today_date) {
-            $status = 0;
+            $status = 1;
             User::find($user_id)->fill(['status'=>$status])->save();
         }else {
             $status = Auth::user()->status;
@@ -51,7 +51,7 @@ class AttendanceController extends Controller
                 'user_id'=>$user_id,
                 'work_start'=>$now_time,
             ]);
-            $status = 1;
+            $status = 2;
             // dd($attendance);
         }
 
@@ -63,7 +63,7 @@ class AttendanceController extends Controller
             $attendance->fill([
                 'work_end'=>$now_time,
             ]);
-            $status = 3;
+            $status = 4;
             // dd($attendance);
         }
 
@@ -74,7 +74,7 @@ class AttendanceController extends Controller
                 'attendance_id'=>$attendance_id,
                 'rest_start'=>$now_time,
             ]);
-            $status = 2;
+            $status = 3;
             // dd($attendance_id);
         }
 
@@ -89,7 +89,7 @@ class AttendanceController extends Controller
             $attendance->fill([
                 'rest_end'=>$now_time,
             ]);
-            $status = 1;
+            $status = 2;
             // dd($attendance);
         }
 
@@ -143,5 +143,21 @@ class AttendanceController extends Controller
         // dd($users);
 
         return view('attendance-user', compact('display', 'users'));
+    }
+
+    // user検索処理
+    public function searchUser(Request $request) {
+        if ($request->has('reset')) {
+            return redirect('/user');
+        }
+        // dd($request);
+        $display = Carbon::now()->format('Y-m-d');
+        $users = User::IdSearch($request->user_id)
+        ->TextSearch($request->keyword)
+        ->StatusSearch($request->status)
+        ->Paginate(5);
+        // dd($users);
+
+        return view('attendance-user', compact('users', 'display'));
     }
 }

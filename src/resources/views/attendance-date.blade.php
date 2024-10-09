@@ -46,7 +46,7 @@
                             </td>
                             <td class="date-table__item">
                                 @if($user['total_rest'] == null)
-                                -
+                                ー
                                 @else
                                 {{ $user['total_rest'] }}
                                 @endif

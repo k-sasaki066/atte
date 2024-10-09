@@ -13,7 +13,7 @@ class AttendanceFactory extends Factory
      */
     public function definition()
     {
-        $date = $this->faker->dateTimeBetween('-4day', '-1day');
+        $date = $this->faker->dateTimeBetween('-1month', 'now');
 
         return [
             'user_id' => $this->faker->numberBetween(1,8),

@@ -36,6 +36,11 @@
                     </a>
                 </li>
                 <li class="header-nav__item">
+                    <a href="/schedule" class="header-nav__link">
+                        勤怠表
+                    </a>
+                </li>
+                <li class="header-nav__item">
                     <form action="/logout" method="post">
                         @csrf
                         <button class="header-nav__link" type="submit">

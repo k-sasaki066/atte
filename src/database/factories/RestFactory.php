@@ -13,10 +13,10 @@ class RestFactory extends Factory
      */
     public function definition()
     {
-        $date = $this->faker->dateTimeBetween('-4day', '-1day');
+        $date = $this->faker->dateTimeBetween('-1month', 'now');
 
         return [
-            'attendance_id' => $this->faker->numberBetween(1,30),
+            'attendance_id' => $this->faker->numberBetween(1,80),
             'rest_start' => $date->format('Y-m-d 12:00:00'),
             'rest_end' => $date->format('Y-m-d 13:i:s'),
         ];

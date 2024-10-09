@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class Attendance extends Model
 {
@@ -21,5 +23,22 @@ class Attendance extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function getMonthDate($month) {
+        $year = Carbon::now()->format('Y');
+        // $month = Carbon::now()->format('m');
+        $date = 1;
+        $carbon = Carbon::createFromDate($year, $month, $date);
+        // dd($carbon);
+
+        // 月初を取得
+        $startOfMonth = $carbon->startOfMonth()->toDateString();
+        // 月末を取得
+        $endOfMonth = $carbon->endOfMonth()->toDateString();
+        // 月初～月末の期間を取得
+        $periods = CarbonPeriod::create($startOfMonth, $endOfMonth)->toArray();
+
+        return $periods;
     }
 }

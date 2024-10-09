@@ -108,8 +108,8 @@
                         ユーザー情報編集
                     </h3>
                     <form class="modal-edit__form" action="/user" method="post">
-                        @method('PATCH')
-                        @csrf
+                    @method('PATCH')
+                    @csrf
                         <div class="modal-edit__group">
                             <label for="" class="modal-edit__label">
                                 ID
@@ -145,7 +145,8 @@
                 <div class="modal-delete__inner">
                     <a href="#" class="modal__close-btn">×</a>
                     <h3 class="modal-edit__header">
-                        このユーザーを削除します。よろしいですか？
+                        このユーザーを削除します。<br>
+                        よろしいですか？
                     </h3>
                     <form class="modal-edit__form" action="/user/search" method="post">
                         @csrf

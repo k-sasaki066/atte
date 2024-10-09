@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Attendance;
 use App\Models\Rest;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
@@ -160,7 +161,7 @@ class AttendanceController extends Controller
 
         return view('attendance-user', compact('users', 'display'));
     }
-
+    // user情報更新処理
     public function update(Request $request) {
         // dd($request);
         $form = $request->only(['name', 'email']);
@@ -170,10 +171,73 @@ class AttendanceController extends Controller
         return redirect('/user');
     }
 
+    // user情報削除処理
     public function delete(Request $request) {
         // dd($request);
         $user = User::find($request->id)->delete();
         // dd($user);
         return redirect('/user');
+    }
+
+    // 勤怠表表示処理
+    public function schedule() {
+        $display = Carbon::now()->format('Y-m');
+        // // 日付取得
+        // $year = Carbon::now()->format('Y');
+        $month = Carbon::now()->format('m');
+        // $date = 1;
+        // $carbon = Carbon::createFromDate($year, $month, $date);
+        // // dd($carbon);
+
+        // // 月初を取得
+        // $startOfMonth = $carbon->startOfMonth()->toDateString();
+        // // 月末を取得
+        // $endOfMonth = $carbon->endOfMonth()->toDateString();
+        // // 月初～月末の期間を取得
+        // $periods = CarbonPeriod::create($startOfMonth, $endOfMonth)->toArray();
+        // // dd($periods);
+
+        // 日付取得
+        $this->periods = new Attendance;
+        $periods = $this->periods->getMonthDate($month);
+        // ユーザー情報取得
+        $user_id = Auth::user()->id;
+        $this->users = new User();
+        $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
+        ->orderBy('work_start', 'asc')
+        ->get();
+        // dd($periods);
+
+        return view('work-schedule', compact('periods', 'users', 'display'));
+    }
+
+    public function searchSchedule(Request $request) {
+        // dd($request);
+        $date = Carbon::parse($request->display);
+        $display = $request->display;
+
+        if($request->has('previous-month')) {
+            $display = $date->copy()->subMonth()->format('Y-m');
+            $month = $date->copy()->subMonth()->format('m');
+        }
+
+        if($request->has('next-month')) {
+            $display = $date->copy()->addMonth()->format('Y-m');
+            $month = $date->copy()->addMonth()->format('m');
+        }
+        // dd($display);
+        // 日付取得
+        $this->periods = new Attendance;
+        $periods = $this->periods->getMonthDate($month);
+
+        // ユーザー情報取得
+        $user_id = Auth::user()->id;
+        $this->users = new User();
+        $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
+        ->orderBy('work_start', 'asc')
+        ->get();
+        // dd($users);
+
+        return view('work-schedule', compact('periods', 'users', 'display'));
     }
 }

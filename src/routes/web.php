@@ -30,4 +30,6 @@ Route::middleware('auth')->group(function() {
     Route::patch('/user', [AttendanceController::class, 'update']);
     Route::get('/user/search', [AttendanceController::class, 'searchUser']);
     Route::post('/user/search', [AttendanceController::class, 'delete']);
+    Route::get('/schedule', [AttendanceController::class, 'schedule']);
+    Route::get('/schedule/month', [AttendanceController::class, 'searchSchedule']);
 });

@@ -38,6 +38,7 @@
     padding: 24px 12px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
+    text-align: center;
 }
 
 .date-table__header:last-of-type,
@@ -49,9 +50,6 @@
 .date-table__item:first-of-type {
     padding-left: 28px;
     width: 24%;
-}
-
-.date-table__header {
     text-align: left;
 }
 

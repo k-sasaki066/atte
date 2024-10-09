@@ -7,9 +7,9 @@
     width: 70%;
     margin: 32px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    row-gap: 16px;
+    gap: 16px;
 }
 
 .search-form__input {
@@ -86,15 +86,12 @@
     border-collapse: collapse;
 }
 
-.user-table__header {
-    text-align: left;
-}
-
 .user-table__header,
 .user-table__item {
     padding: 12px 18px;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
+    text-align: center;
 }
 
 .user-table__header:first-of-type,
@@ -105,7 +102,7 @@
 
 .user-table__header:nth-child(2),
 .user-table__item:nth-child(2) {
-    width: 10%;
+    width: 8%;
 }
 
 .user-table__header:nth-child(3),
@@ -181,7 +178,7 @@
 
 .modal-edit__inner,
 .modal-delete__inner {
-    padding: 64px 64px;
+    padding: 48px 48px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -210,17 +207,22 @@
 }
 
 .modal-edit__group {
+    margin: 0 auto;
+    padding: 16px;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    align-items: center;
     gap: 20px;
-    padding: 16px;
+    align-items: center;
 }
 
 .modal-edit__input {
     border: 1px solid #ddd;
     border-radius: 3px;
     padding: 8px 16px;
+}
+
+.modal-edit__text {
+    text-align: center;
 }
 
 .modal-edit__button {
@@ -253,5 +255,11 @@
 
     .user-table__container::-webkit-scrollbar-thumb {
         background: #999;
+    }
+
+    .modal-edit__inner,
+    .modal-delete__inner {
+        padding: 32px 32px;
+        width: 70%;
     }
 }

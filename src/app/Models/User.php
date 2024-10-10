@@ -92,4 +92,10 @@ class User extends Authenticatable
             $query->where('status', '=',$status);
         }
     }
+
+    public function scopeNameSearch($query, $name) {
+        if(!empty($name)) {
+            $query->Where('name', 'LIKE', '%' .$name .'%');
+        }
+    }
 }

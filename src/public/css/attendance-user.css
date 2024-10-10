@@ -76,8 +76,7 @@
 
 /* ---テーブル--- */
 .user-table__container {
-    margin: 48px auto 0;
-    width: 90%;
+    margin: 0 auto;
     white-space: nowrap;
 }
 
@@ -208,14 +207,15 @@
 
 .modal-edit__group {
     margin: 0 auto;
-    padding: 16px;
+    padding: 16px 0;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 112px 1fr;
     gap: 20px;
     align-items: center;
 }
 
 .modal-edit__input {
+    text-align: center;
     border: 1px solid #ddd;
     border-radius: 3px;
     padding: 8px 16px;

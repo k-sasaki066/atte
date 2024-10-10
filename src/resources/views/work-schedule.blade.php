@@ -5,15 +5,31 @@
 @endsection
 
 @section('content')
-<form class="schedule-form" action="/schedule/month" method="get">
-    @csrf
-    <button class="schedule-change__button" name="previous-month"> < 前月 </button>
-    <input type="hidden" name="display" value="{{ $display }}">
-    <h2 class="schedule-form__header">
-        {{ substr($display, 0, 4).'年' .substr($display, 5, 2).'月' }}
+    <h2 class="schedule-date__user">
+        @php
+            $user_name = $users->pluck('name')->first();
+        @endphp
+        {{ $user_name }}さんの勤怠表
     </h2>
-    <button class="schedule-change__button" name="next-month"> 翌月 > </button>
-</form>
+    <div class="schedule-search__group">
+        <form class="schedule-search__form" action="/schedule/search" method="get">
+        @csrf
+            <div class="schedule-date__search">
+                <input type="hidden" name="display" value="{{ $display }}">
+                <button class="schedule-change__button" name="previous-month"> < </button>
+                <h2 class="schedule-form__header">
+                    {{ substr($display, 0, 4).'年' .substr($display, 5, 2).'月' }}
+                </h2>
+                <button class="schedule-change__button" name="next-month"> > </button>
+            </div>
+
+            <div class="schedule-name__search">
+                <input class="schedule-name__search-input" type="text" name="name" placeholder="名前を入力してください" value="{{ request('name') }}" >
+                <input type="hidden" name="user_id" value="{{ $user_id }}">
+                <input class="schedule-name__search-btn" type="submit" value="検索">
+            </div>
+        </form>
+    </div>
 
 <div class="schedule-table__container">
     <table class="schedule-table">

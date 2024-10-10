@@ -182,20 +182,7 @@ class AttendanceController extends Controller
     // 勤怠表表示処理
     public function schedule() {
         $display = Carbon::now()->format('Y-m');
-        // // 日付取得
-        // $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
-        // $date = 1;
-        // $carbon = Carbon::createFromDate($year, $month, $date);
-        // // dd($carbon);
-
-        // // 月初を取得
-        // $startOfMonth = $carbon->startOfMonth()->toDateString();
-        // // 月末を取得
-        // $endOfMonth = $carbon->endOfMonth()->toDateString();
-        // // 月初～月末の期間を取得
-        // $periods = CarbonPeriod::create($startOfMonth, $endOfMonth)->toArray();
-        // // dd($periods);
 
         // 日付取得
         $this->periods = new Attendance;
@@ -204,15 +191,18 @@ class AttendanceController extends Controller
         $user_id = Auth::user()->id;
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
+        ->whereYear('work_start', substr($display, 0, 4))
+        ->whereMonth('work_start', substr($display, 5, 2))
         ->orderBy('work_start', 'asc')
         ->get();
-        // dd($periods);
+        // dd($users);
 
-        return view('work-schedule', compact('periods', 'users', 'display'));
+        return view('work-schedule', compact('periods', 'users', 'display', 'user_id'));
     }
 
-    public function searchSchedule(Request $request) {
+    public function searchScheduleDate(Request $request) {
         // dd($request);
+        $month = Carbon::now()->format('m');
         $date = Carbon::parse($request->display);
         $display = $request->display;
 
@@ -226,18 +216,29 @@ class AttendanceController extends Controller
             $month = $date->copy()->addMonth()->format('m');
         }
         // dd($display);
+
         // 日付取得
         $this->periods = new Attendance;
         $periods = $this->periods->getMonthDate($month);
 
         // ユーザー情報取得
-        $user_id = Auth::user()->id;
+        $user = User::NameSearch($request->name)
+        ->first();
+        if(is_null($request->name)) {
+            $user_id = $request->user_id;
+        }else {
+            $user_id = $user->id;
+        }
+
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
+        ->whereYear('work_start', substr($display, 0, 4))
+        ->whereMonth('work_start', substr($display, 5, 2))
         ->orderBy('work_start', 'asc')
+
         ->get();
         // dd($users);
 
-        return view('work-schedule', compact('periods', 'users', 'display'));
+        return view('work-schedule', compact('periods', 'users', 'display', 'user_id'));
     }
 }

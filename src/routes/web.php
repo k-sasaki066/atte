@@ -24,12 +24,15 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::middleware('auth')->group(function() {
     Route::get('/', [AttendanceController::class, 'index']);
     Route::post('/', [AttendanceController::class, 'create']);
+
     Route::get('/attendance', [AttendanceController::class, 'date']);
     Route::get('/attendance/date', [AttendanceController::class, 'search']);
+
     Route::get('/user', [AttendanceController::class, 'indexUser']);
     Route::patch('/user', [AttendanceController::class, 'update']);
     Route::get('/user/search', [AttendanceController::class, 'searchUser']);
     Route::post('/user/search', [AttendanceController::class, 'delete']);
+
     Route::get('/schedule', [AttendanceController::class, 'schedule']);
-    Route::get('/schedule/month', [AttendanceController::class, 'searchSchedule']);
+    Route::get('/schedule/search', [AttendanceController::class, 'searchScheduleDate']);
 });

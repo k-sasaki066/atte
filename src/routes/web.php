@@ -21,7 +21,7 @@ use App\Http\Controllers\RegisteredUserController;
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth', 'verified')->group(function() {
     Route::get('/', [AttendanceController::class, 'index']);
     Route::post('/', [AttendanceController::class, 'create']);
 

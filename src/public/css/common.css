@@ -37,6 +37,10 @@ a {
     color: darkgrey;
 }
 
+#drawer_toggle {
+    display: none;
+}
+
 /* ---main--- */
 .content {
     grid-row: 2/3;
@@ -96,4 +100,105 @@ a {
     padding: 4px 12px;
     background-color: #4f7eba;
     color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        position: relative;
+    }
+
+    #drawer_toggle {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+}
+
+    #drawer_toggle span {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #666;
+        vertical-align: top;
+        transition: .5s;
+    }
+
+    #drawer_toggle span:nth-child(2) {
+        margin-top: 10px;
+    }
+
+    #drawer_toggle span:last-child {
+        margin-top: 20px;
+    }
+
+    .header-right {
+        position: fixed;
+        top: 80px;
+        width: 100vw;
+        height: calc(100% - 80px);
+        background: #fff;
+        opacity: 0.9;
+        display: block;
+        right: -100%;
+        transition: right .5s;
+    }
+
+    .sp_open {
+        z-index: 2;
+        position: fixed;
+        top: 80px;
+        width: 100%;
+        height: calc(100% - 80px);
+        background: #fff;
+        opacity: 0.9;
+        display: block;
+        right: 0;
+    }
+
+    .header-nav__list {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-nav__item {
+        display: block;
+        padding: 25px;
+        margin: 0;
+    }
+
+    .header-nav__link {
+        color: #666;
+        text-align: center;
+    }
+
+    #drawer_toggle.open span {
+        top: 40px;
+        right: 28px;
+        width: 35px;
+        margin: 0;
+    }
+
+    #drawer_toggle.open span:first-child {
+        transform: rotate(45deg);
+        transition: .5s;
+    }
+
+    #drawer_toggle.open span:nth-child(2) {
+        display: none;
+    }
+
+    #drawer_toggle.open span:last-child {
+        transform: rotate(-45deg);
+        transition: .5s;
+    }
 }

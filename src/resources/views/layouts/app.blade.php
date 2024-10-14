@@ -17,8 +17,15 @@
         <div class="header-left">
             <h1 class="header-text">Atte</h1>
         </div>
+
+        <div id="drawer_toggle">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
         @if(Auth::check())
-        <nav class="header-right">
+        <nav class="header-right" id="header-nav">
             <ul class="header-nav__list">
                 <li class="header-nav__item">
                     <a href="/" class="header-nav__link">
@@ -51,6 +58,7 @@
             </ul>
         </nav>
         @endif
+        <script src="{{ asset('js/nav.js') }}"></script>
     </header>
 
     <main class="content">

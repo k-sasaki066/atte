@@ -6,9 +6,6 @@
 
 @section('content')
 
-@php
-    $user_name = $users->pluck('name')->first();
-@endphp
 <h2 class="schedule-date__user">
     {{ $user_name }}さんの勤怠表
 </h2>

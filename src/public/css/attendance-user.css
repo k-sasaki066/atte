@@ -238,23 +238,32 @@
     color: #fff;
 }
 
+.user-table__container {
+    overflow-x: auto;
+    width: 90%;
+    height: 400px;
+}
+
+.user-table__container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.user-table__container::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px;
+}
+
+.user-table__container::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 768px) {
     .user-table__container {
         overflow-x: scroll;
-        width: 500px;
+        width: 600px;
         height: 400px;
-    }
-
-    .user-table__container::-webkit-scrollbar {
-        height: 5px;
-    }
-
-    .user-table__container::-webkit-scrollbar-track {
-        background: #333;
-    }
-
-    .user-table__container::-webkit-scrollbar-thumb {
-        background: #999;
     }
 
     .modal-edit__inner,

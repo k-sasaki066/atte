@@ -161,12 +161,18 @@ class AttendanceController extends Controller
 
         return view('attendance-user', compact('users', 'display'));
     }
+
     // user情報更新処理
     public function update(Request $request) {
         // dd($request);
-        $form = $request->only(['name', 'email']);
+        // $form = $request->only(['name', 'email']);
         $user = User::find($request->id)
-        ->update($form);
+        ->fill([
+            'name' => $request->name,
+            'email' => $request->email,
+            'email_verified_at' => null,
+        ])
+        ->save();
 
         return redirect('/user');
     }
@@ -189,6 +195,8 @@ class AttendanceController extends Controller
         $periods = $this->periods->getMonthDate($month);
         // ユーザー情報取得
         $user_id = Auth::user()->id;
+        $user_name = Auth::user()->name;
+        // dd($user_name);
         $this->users = new User();
         $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
         ->whereYear('work_start', substr($display, 0, 4))
@@ -197,9 +205,10 @@ class AttendanceController extends Controller
         ->get();
         // dd($users);
 
-        return view('work-schedule', compact('periods', 'users', 'display', 'user_id'));
+        return view('work-schedule', compact('periods', 'users', 'display', 'user_id', 'user_name'));
     }
 
+    // ユーザー毎勤怠表検索処理
     public function searchScheduleDate(Request $request) {
         // dd($request);
         $month = Carbon::now()->format('m');
@@ -215,6 +224,10 @@ class AttendanceController extends Controller
             $display = $date->copy()->addMonth()->format('Y-m');
             $month = $date->copy()->addMonth()->format('m');
         }
+
+        if($request->has('name')) {
+            $month = substr($display, 5, 2);
+        }
         // dd($display);
 
         // 日付取得
@@ -222,16 +235,21 @@ class AttendanceController extends Controller
         $periods = $this->periods->getMonthDate($month);
 
         // ユーザー情報取得
-        $user = User::NameSearch($request->name)
-        ->first();
+        $user = User::NameSearch($request->name)->
+        withTrashed()->first();
+        $user_name = $user->name;
+        // dd($user_name);
         if(is_null($request->name)) {
             $user_id = $request->user_id;
         }else {
             $user_id = $user->id;
         }
+        // dd($user_id);
 
         $this->users = new User();
-        $users = $this->users->getUserAttendanceTable()->where('user_id', $user_id)
+        $users = $this->users->getUserAttendanceTable()
+        ->withTrashed()
+        ->where('user_id', $user_id)
         ->whereYear('work_start', substr($display, 0, 4))
         ->whereMonth('work_start', substr($display, 5, 2))
         ->orderBy('work_start', 'asc')
@@ -239,6 +257,6 @@ class AttendanceController extends Controller
         ->get();
         // dd($users);
 
-        return view('work-schedule', compact('periods', 'users', 'display', 'user_id'));
+        return view('work-schedule', compact('periods', 'users', 'display', 'user_id', 'user_name'));
     }
 }

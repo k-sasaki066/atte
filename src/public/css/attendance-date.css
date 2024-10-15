@@ -67,7 +67,7 @@
 @media screen and (max-width: 768px) {
     .date-table__container {
         overflow-x: scroll;
-        width: 500px;
+        width: 90%;
         height: 400px;
     }
 

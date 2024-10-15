@@ -133,7 +133,7 @@
 @media screen and (max-width: 768px) {
     .schedule-table__container {
         overflow-x: scroll;
-        width: 600px;
+        width: 90%;
         height: 400px;
     }
 

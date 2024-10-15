@@ -237,12 +237,13 @@ class AttendanceController extends Controller
         // ユーザー情報取得
         $user = User::NameSearch($request->name)->
         withTrashed()->first();
-        $user_name = $user->name;
         // dd($user_name);
         if(is_null($request->name)) {
-            $user_id = $request->user_id;
+            $user_id = Auth::user()->id;
+            $user_name = Auth::user()->name;
         }else {
             $user_id = $user->id;
+            $user_name = $user->name;
         }
         // dd($user_id);
 

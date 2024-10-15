@@ -13,12 +13,12 @@ class AttendanceFactory extends Factory
      */
     public function definition()
     {
-        $date = $this->faker->unique()->dateTimeBetween('-1month', '+1month');
+        // $date = $this->faker->unique()->dateTimeBetween('-1month', '+1month');
 
-        return [
-            'user_id' => $this->faker->numberBetween(1,10),
-            'work_start' => $date->format('Y-m-d 08:00:00'),
-            'work_end' => $date->format('Y-m-d 17:i:s'),
-        ];
+        // return [
+        //     'user_id' => $this->faker->numberBetween(1,10),
+        //     'work_start' => $date->format('Y-m-d 08:00:00'),
+        //     'work_end' => $date->format('Y-m-d 17:i:s'),
+        // ];
     }
 }

@@ -60,7 +60,7 @@
         @endif
         <script src="{{ asset('js/nav.js') }}"></script>
     </header>
-
+    
     <main class="content">
         @yield('content')
     </main>

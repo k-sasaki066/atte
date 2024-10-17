@@ -5,10 +5,15 @@
 @endsection
 
 @section('content')
-
-<h2 class="schedule-date__user">
+@if($user_name == null)
+    <h2 class="schedule-date__user">
+    該当ユーザーが見つかりませんでした。
+    </h2>
+@else
+    <h2 class="schedule-date__user">
     {{ $user_name }}さんの勤怠表
-</h2>
+    </h2>
+@endif
 
 <div class="schedule-search__group">
     <form class="schedule-search__form" action="/schedule/search" method="get">

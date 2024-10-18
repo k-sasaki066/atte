@@ -17,7 +17,7 @@ class AttendanceTableSeeder extends Seeder
     public function run()
     {
         $start = '2024-09-01';
-        $end = '2024-10-14';
+        $end = '2024-10-15';
 
         for ($id = 1; $id <= 10; $id++) {
             for ($i = new DateTime($start); $i <= new DateTimeImmutable($end); $i->modify('+1 day')) {

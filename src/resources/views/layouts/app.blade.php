@@ -18,13 +18,13 @@
             <h1 class="header-text">Atte</h1>
         </div>
 
+        @if(Auth::check())
         <div id="drawer_toggle">
 			<span></span>
 			<span></span>
 			<span></span>
 		</div>
 
-        @if(Auth::check())
         <nav class="header-right" id="header-nav">
             <ul class="header-nav__list">
                 <li class="header-nav__item">
@@ -60,7 +60,7 @@
         @endif
         <script src="{{ asset('js/nav.js') }}"></script>
     </header>
-    
+
     <main class="content">
         @yield('content')
     </main>

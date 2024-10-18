@@ -15,11 +15,12 @@
     <input class="search-form__input keyword-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ request('keyword') }}">
     <div class="search-form__attendance">
         <select class="search-form__input attendance-select" name="status">
-            <option selected disabled>選択してください</option>
+            <option value="" selected disabled>選択してください</option>
             <option value="1" @if( request('status')==1 ) selected @endif>出勤</option>
             <option value="2" @if( request('status')==2 ) selected @endif>勤務中</option>
             <option value="3" @if( request('status')==3 ) selected @endif>休憩</option>
             <option value="4" @if( request('status')==4 ) selected @endif>退勤</option>
+            <option value="5" @if( request('status')==5 ) selected @endif>その他</option>
         </select>
     </div>
     <div class="search-form__actions">
@@ -149,6 +150,7 @@
                         よろしいですか？
                     </h3>
                     <form class="modal-edit__form" action="/user/search" method="post">
+                        @method('DELETE')
                         @csrf
                         <div class="modal-edit__group">
                             <label for="" class="modal-edit__label">

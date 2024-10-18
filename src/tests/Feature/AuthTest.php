@@ -46,7 +46,6 @@ class AuthTest extends TestCase
 
         $response = $this->post(('/register'), $data);
 
-        // メール認証機能があるのでstatusが302になる
         $response->assertRedirect('/')->assertStatus(302);
 
         // データベースに値が存在するか
@@ -54,6 +53,7 @@ class AuthTest extends TestCase
             'name'    => 'test',
             'email'   => 'test@email.com',
         ]);
+        $this->assertDatabaseCount( 'users', 1 );
     }
 
     // loginページに正常にアクセスできるか
@@ -71,15 +71,14 @@ class AuthTest extends TestCase
 
         $this->assertGuest(); //未ログイン状態であることをチェック
 
-        $response = $this->actingAs($user)
-            ->get('/');
+        $response = $this->post(('/login'), ['email' => $user->email, 'password' => 'password']);
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
+        $this->assertAuthenticatedAs($user);
 
-        $response->assertStatus(200)
-            ->assertViewIs('index');
-
-
-        $this->assertAuthenticated(); //ログインが成功したことをチェック
-
+        // ログインした状態で'/login'にアクセス
+        $response = $this->get( '/login' );
+        $response->assertStatus(302);
     }
 
     // 誤ったパスワードを入力した場合エラーメッセージが出るか

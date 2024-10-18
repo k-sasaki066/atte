@@ -89,8 +89,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function scopeStatusSearch($query, $status) {
-        if(!empty($status)) {
-            $query->where('status', '=',$status);
+        if(!empty($status) && $status == 5) {
+            $query->where('status', '=', null);
+        }elseif(!empty($status) && $status !== 5) {
+            $query->where('status', '=', $status);
         }
     }
 

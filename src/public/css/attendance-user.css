@@ -78,6 +78,9 @@
 .user-table__container {
     margin: 0 auto;
     white-space: nowrap;
+    overflow-x: auto;
+    width: 90%;
+    height: 400px;
 }
 
 .user-table {
@@ -238,12 +241,6 @@
     color: #fff;
 }
 
-.user-table__container {
-    overflow-x: auto;
-    width: 90%;
-    height: 400px;
-}
-
 .user-table__container::-webkit-scrollbar {
     height: 8px;
     width: 8px;
@@ -259,7 +256,7 @@
     border-radius: 5px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
     .user-table__container {
         overflow-x: scroll;
         width: 600px;

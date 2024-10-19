@@ -19,11 +19,12 @@
 }
 
 .id-input {
+    max-width: 205px;
     min-width: 190px;
 }
 
 .keyword-input {
-    min-width: 340px;
+    width: 340px;
 }
 
 .search-form__attendance {
@@ -218,6 +219,7 @@
 }
 
 .modal-edit__input {
+    min-width: 200px;
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 3px;

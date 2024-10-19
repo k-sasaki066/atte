@@ -36,7 +36,6 @@ class AuthTest extends TestCase
     // データベースに値が存在するか
     public function test_user_register()
     {
-        // email_verified_at = nullで登録;
         $data = [
             'name' => 'test',
             'email' => 'test@email.com',
@@ -46,14 +45,15 @@ class AuthTest extends TestCase
 
         $response = $this->post(('/register'), $data);
 
-        $response->assertRedirect('/')->assertStatus(302);
-
         // データベースに値が存在するか
         $this->assertDatabaseHas('users', [
             'name'    => 'test',
             'email'   => 'test@email.com',
+            'email_verified_at' => null,
         ]);
         $this->assertDatabaseCount( 'users', 1 );
+
+        $response->assertRedirect('/')->assertStatus(302);
     }
 
     // loginページに正常にアクセスできるか
@@ -79,6 +79,7 @@ class AuthTest extends TestCase
         // ログインした状態で'/login'にアクセス
         $response = $this->get( '/login' );
         $response->assertStatus(302);
+        $response->assertRedirect('/');
     }
 
     // 誤ったパスワードを入力した場合エラーメッセージが出るか
@@ -100,7 +101,24 @@ class AuthTest extends TestCase
         $this->assertGuest();
     }
 
+    // 誤ったメールアドレスを入力した場合エラーメッセージが出るか
+    public function test_users_invalid_email(): void
+    {
+        $user = User::factory()->create();
 
+        $this->assertGuest(); //未ログイン状態であることをチェック
+
+        $response = $this->post('/login', [
+            'email' => 'wrong@test.com',
+            'password' => $user->password,
+        ]);
+
+        $response->assertSessionHasErrors([
+            'email' => '認証情報と一致するレコードがありません。'
+        ]);
+
+        $this->assertGuest();
+    }
 
     // ログアウト後ログイン画面に移遷するか
     public function test_users_can_logout(): void

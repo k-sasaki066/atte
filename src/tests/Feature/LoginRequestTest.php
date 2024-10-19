@@ -60,35 +60,35 @@ class LoginRequestTest extends TestCase
         return [
             'OK' => [
                 ['email', 'password'],
-                ['test@email.com', 'test1234'],
+                ['test@example.com', 'test1234'],
                 true
             ],
-            'メールアドレス必須エラー1' => [
+            'メールアドレス形式エラー1' => [
                 ['email', 'password'],
-                ['testemail.com', 'test1234'],
+                ['testexample.com', 'test1234'],
                 false
             ],
-            'メールアドレス必須エラー2' => [
+            'メールアドレス形式エラー2' => [
                 ['email', 'password'],
-                ['testemailcom', 'test1234'],
+                ['testexamplecom', 'test1234'],
                 false
             ],
-            'メールアドレス必須エラー3' => [
+            'メールアドレス形式エラー3' => [
                 ['email', 'password'],
                 ['test@', 'test1234'],
                 false
             ],
-            'メールアドレス必須エラー4' => [
+            'メールアドレス形式エラー4' => [
                 ['email', 'password'],
-                ['email.com', 'test1234'],
+                ['example.com', 'test1234'],
                 false
             ],
-            'メールアドレス形式エラー' => [
+            'メールアドレス必須エラー' => [
                 ['email', 'password'],
                 [null, 'test1234'],
                 false
             ],
-            
+
             'パスワード必須エラー' => [
                 ['email', 'password'],
                 ['test@email.com', null],

@@ -27,7 +27,6 @@ class Attendance extends Model
 
     public function getMonthDate($month) {
         $year = Carbon::now()->format('Y');
-        // $month = Carbon::now()->format('m');
         $date = 1;
         $carbon = Carbon::createFromDate($year, $month, $date);
         // dd($carbon);

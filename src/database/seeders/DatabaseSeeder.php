@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         $this->call(AttendanceTableSeeder::class);
         $this->call(RestTableSeeder::class);
-        // Attendance::factory(80)->create();
-        // Rest::factory(80)->create();
+
     }
 }

@@ -60,7 +60,8 @@ mysql 8.0.26
 <br>
 
 ## テーブル設計
-<img width="704" alt="atte-table-list" src="https://github.com/user-attachments/assets/d70fae87-0b44-48a3-872e-a344e7bc9490">
+<img width="682" alt="テーブル設計" src="https://github.com/user-attachments/assets/34ebfd09-0eac-477d-a7f1-e564db1f2d25">
+
 <br>
 <br>
 
